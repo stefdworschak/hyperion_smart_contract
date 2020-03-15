@@ -14,6 +14,7 @@ import time
 
 import web3
 from web3 import Web3, HTTPProvider, IPCProvider
+from web3.middleware import geth_poa_middleware
 from solc import compile_standard
 
 import env_vars
@@ -57,6 +58,7 @@ def main():
     
     # Test intstance
     w3 = Web3(IPCProvider(NODE_ADDRESS))
+    w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
     # Pre funded account 
     w3.eth.defaultAccount = w3.eth.accounts[0]
