@@ -71,6 +71,7 @@ def main():
 
     tx_hash = SolContract.constructor().transact()
     tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    print(tx_receipt.contractAddress)
 
     contract_ = w3.eth.contract(
         address=tx_receipt.contractAddress,
