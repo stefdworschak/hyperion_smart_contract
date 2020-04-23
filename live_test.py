@@ -80,34 +80,6 @@ def main():
     tx_hash = contract_.functions.setMessage('Nihao').transact()
     tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     print(contract_.functions.getMessage().call())
-
-    """
-    construct_txn = SolContract.constructor().buildTransaction({
-        'from': account.address,
-        'nonce': w3.eth.getTransactionCount(account.address),
-        'gas': 1728712,
-        'gasPrice': w3.toWei('21', 'gwei')})
-
-    signed = account.signTransaction(construct_txn)
-    tx_hash = w3.eth.sendRawTransaction(signed.rawTransaction)
-    tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-    print(tx_receipt.contractAddress)
-
-    sol_contract = w3.eth.contract(
-        address=tx_receipt.contractAddress,
-        abi=abi)
-
-    tx = sol_contract.functions.setMessage("Hello, World!").buildTransaction({
-        'from': account.address,
-        'nonce': w3.eth.getTransactionCount(account.address),
-        'gas': 100000,
-        'gasPrice': w3.toWei('21', 'gwei')})
-    signed = account.signTransaction(tx)
-    tx_hash = w3.eth.sendRawTransaction(signed.rawTransaction)
-    tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-    time.sleep(10)
-    print(sol_contract.functions.getMessage().call())
-    """
     
 
 if __name__ == '__main__':
